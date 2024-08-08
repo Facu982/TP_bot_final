@@ -1,0 +1,39 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558.
+    // for the documentation about the tasks.json format.
+    // cuando aparecen dos barras inclinadas en los codigos indican que es un comentario, informacion dejada por el programador para el entendimiento de otra persona, no afecta al codigo.
+    "version": "2.0.0", //indica que el archivo de configuración de tareas sigue la versión 2.0.0 del formato de configuración de tareas de Visual Studio Code.
+    "tasks": [ //indica que este archivo.json se utiliza para definir y configurar tareas.
+        {
+            "label": "compile", //identificador para ser detectada por el programa, terminal-run tasks-compile para ejecutarlo.
+            "windows": {
+                "command": "C:\\FPC\\3.2.2\\bin\\i386-win32\\fpc.exe" //el comando que queres ejecutar, este caso la accion de copilador.
+            },
+            "args": [ //los parametros que se pasan a un comando durante la ejecución de una tarea.
+                "${workspaceRoot}\\${fileBasenameNoExtension}\\${fileBasenameNoExtension}.pas", //{
+                //indica donde se encuentra el archivo.pas a compilar.
+                //${workspaceRoot}, se refiere al directorio raíz o principal del espacio de trabajo actual. (es parecido a ${workspaceFolder}).
+                //${fileBasenameNoExtension}, seria el nombre del archivo actual con el que esta trabajando sin incluir el tipo de archivo.
+                //yo agrege otro "${fileBasenameNoExtension}" debido a que tengo el archivo enotracarpeta mas.
+                //}
+                "-g",
+                "-O-",
+                "-v"
+                //estos comando controlan diversas opciones durante el proceso de compilación. (si quieren mas informacion investiguen).
+            ],
+            "problemMatcher": { //realmente nose bien que es pero principalmente se usa para analizar y detectar errores, y avisarnos en la terminal.
+                "owner": "external",
+                "pattern": {
+                    "regexp": "^([\\w]+\\.(p|pp|pas))\\((\\d+)\\,(\\d+)\\)\\s(Fatal|Error|Warning|Note):(.*)",
+                    "file": 1,
+                    "line": 3,
+                    "column": 4,
+                    "message": 6
+                }
+            }
+        }
+    ]
+}
+//Creditos al sitio web:
+//https: blog.51cto.com/u_15127508/4532213
+//Visual Studio Code中配置Pascal

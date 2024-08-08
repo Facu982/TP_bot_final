@@ -1,0 +1,27 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // cuando aparecen dos barras inclinadas en los codigos indican que es un comentario, informacion dejada por el programador para el entendimiento de otra persona, no afecta al codigo.
+    "version": "0.2.0", //indica que el archivo de configuración de tareas sigue la versión 2.0.0 del formato de configuración de tareas de Visual Studio Code.
+    "configurations": [ //indica que a continuacion se definen las configuraciones específicas para la depuración de tu proyecto.
+        {
+            "name": "Pascal_Launch", //simplemente un nombre.
+            "type": "gdb", //tipo de debugger que vas a utilizar, gdb o lldb. (recomendado investigar).
+            "request": "launch", //indicar que deseas iniciar una sesión de depuración.
+            "target": "${fileBasenameNoExtension}.exe", //ejecutable a lanzar.
+            "cwd": "${workspaceFolder}/${fileBasenameNoExtension}", //{
+            //carpeja de guardado del projecto(donde se encuentra .vscode).
+            //${workspaceFolder}, seria la carpeta principal de tu projecto.
+            //${fileBasenameNoExtension}, seria el nombre del archivo actual con el que esta trabajando sin incluir el tipo de archivo.
+            //importante entender que el caracter "/" o "\" son separador de directorios en rutas de carpetas o archivos.
+            //importante entender que cada archivo finaliza con ".extensión", la extensión indica el tipo de archivo y suele estar asociada con el formato o la aplicación que utiliza ese archivo.
+            //}
+            "preLaunchTask": "compile", //{
+            //especifica que se debe ejecutar una tarea antes de iniciar la sesión de depuración.
+            //"compile", es el nombre del label ("label": "compile",) del archivo tasks.json configurado.
+            //}
+            "terminal": "cmd" //indica que se ejecuta en la terminal cmd del windows, sacar si quiere ejecutarlo en la terminal de VS-code.
+        }
+    ]
+}
