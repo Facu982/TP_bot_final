@@ -1,16 +1,18 @@
-unit unit2;
 
-interface
+Unit unit2;
 
-uses
-  crt;
-Const
+Interface
+
+Uses 
+crt;
+
+Const 
   y = 5;
   x = 40;
 Procedure dath_vader ();
 Procedure cuadro_vader ();
 
-implementation
+Implementation
 
 Procedure dath_vader ();
 
@@ -54,5 +56,5 @@ Begin
   GotoXY (35,21);
   writeln ('Bienvenido al chatBot de cine, auspiciado por Darth Vader');
   GotoXY(35,25);
-end;
-end.
+End;
+End.

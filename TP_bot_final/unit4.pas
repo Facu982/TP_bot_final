@@ -1,59 +1,60 @@
-unit unit4;
 
-interface
+Unit unit2;
 
-uses
-  unit1;
+Interface
 
-Procedure abrir(Var archivo: t_archivo);
-Procedure cargar_archivo(Var archivo: t_archivo);
-Procedure llenar_vector_fin(Var vector_fin: t_vector_fin);
-implementation
+Uses 
+crt;
 
-uses
-  crt;
+Const 
+  y = 5;
+  x = 40;
+Procedure dath_vader ();
+Procedure cuadro_vader ();
 
-Procedure cargar_archivo(Var archivo: t_archivo);
+Implementation
 
-Var
-  aux: t_dato;
-  i, j: byte;
+Procedure dath_vader ();
+
 Begin
-  For j := 1 To 2 Do
-    Begin
-      For i := 1 To n Do
-        Begin
-          writeln('Ingrese palabra clave ', i, ': ');
-          readln(aux.clave[i]);
-        End;
-      writeln('Ingrese respuesta: ');
-      readln(aux.res);
-      write(archivo, aux);
-      ClrScr;
-    End;
-  ClrScr;
+  gotoxy(x-1,y-1);
+  writeln ('  ____________________________________');
+  GotoXY (x,y);
+  writeln ('|               .--.                 |' );
+  gotoxy (x,y+1);
+  writeln ('|         /       ||       \         |');
+  gotoxy(x,y+2);
+  writeln ('|        /        ||        \        |');
+  gotoxy(x,y+3);
+  writeln ('|        |        ||        |        |');
+  gotoxy(x,y+4);
+  writeln ('|        |        ||        |        |');
+  gotoxy(x,y+5);
+  writeln ('|        |/ ----- \/ ----- \|        |');
+  gotoxy(x,y+6);
+  writeln ('|       /  (     )  (     )  \       |');
+  gotoxy(x,y+7);
+  writeln ('|      / \  ----- () -----  / \      |');
+  gotoxy(x,y+8);
+  writeln ('|     /   \      /||\      /   \     |');
+  gotoxy(x,y+9);
+  writeln ('|    /     \    /||||\    /     \    |');
+  gotoxy(x,y+10);
+  writeln ('|   /       \  /||||||\  /       \   |');
+  gotoxy(x,y+11);
+  writeln ('|  /_        \o========o/        _\  |');
+  gotoxy(x,y+12);
+  writeln ('|      --..._  |-.  .-|_...--        |');
+  gotoxy(x,y+13);
+  writeln ('|             |        |             |');
+  gotoxy(x,y+14);
+  writeln ('| ___________________________________|');
 End;
 
-Procedure abrir(Var archivo:t_archivo);
+Procedure cuadro_vader ();
 Begin
-  assign(archivo,ruta);
-  {$I-}
-  reset(archivo);
-  {$I-}
-  If IOResult <> 0 Then
-     begin
-       Rewrite(archivo);
-       cargar_archivo(archivo);
-     end;
+  GotoXY (35,21);
+  writeln ('Bienvenido al chatBot de cine, auspiciado por Darth Vader');
+  GotoXY(35,25);
 End;
-
-Procedure llenar_vector_fin(Var vector_fin: t_vector_fin);
-Begin
-  vector_fin[1] := 'adios';
-  vector_fin[2] := 'tengo que irme';
-  vector_fin[3] := 'nos vemos';
-  vector_fin[4] := 'chau';
-  vector_fin[5] := 'me voy';
-End;
-
-end.
+End.
