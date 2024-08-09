@@ -1,60 +1,35 @@
 
-Unit unit2;
+Unit unit5;
 
 Interface
 
 Uses 
-crt;
+crt, unit1, unit2,unit3,unit4;
 
-Const 
-  y = 5;
-  x = 40;
-Procedure dath_vader ();
-Procedure cuadro_vader ();
+Procedure EjecutarChatBotCine;
 
 Implementation
 
-Procedure dath_vader ();
+Procedure EjecutarChatBotCine;
+
+Var 
+  aux: t_dato;
+  vector_fin: t_vector_fin;
+  archivo: t_archivo;
+
+  texto: string;
 
 Begin
-  gotoxy(x-1,y-1);
-  writeln ('  ____________________________________');
-  GotoXY (x,y);
-  writeln ('|               .--.                 |' );
-  gotoxy (x,y+1);
-  writeln ('|         /       ||       \         |');
-  gotoxy(x,y+2);
-  writeln ('|        /        ||        \        |');
-  gotoxy(x,y+3);
-  writeln ('|        |        ||        |        |');
-  gotoxy(x,y+4);
-  writeln ('|        |        ||        |        |');
-  gotoxy(x,y+5);
-  writeln ('|        |/ ----- \/ ----- \|        |');
-  gotoxy(x,y+6);
-  writeln ('|       /  (     )  (     )  \       |');
-  gotoxy(x,y+7);
-  writeln ('|      / \  ----- () -----  / \      |');
-  gotoxy(x,y+8);
-  writeln ('|     /   \      /||\      /   \     |');
-  gotoxy(x,y+9);
-  writeln ('|    /     \    /||||\    /     \    |');
-  gotoxy(x,y+10);
-  writeln ('|   /       \  /||||||\  /       \   |');
-  gotoxy(x,y+11);
-  writeln ('|  /_        \o========o/        _\  |');
-  gotoxy(x,y+12);
-  writeln ('|      --..._  |-.  .-|_...--        |');
-  gotoxy(x,y+13);
-  writeln ('|             |        |             |');
-  gotoxy(x,y+14);
-  writeln ('| ___________________________________|');
+  llenar_vector_fin(vector_fin);
+  //abrir(archivo);
+  assign(archivo,ruta);
+  rewrite(archivo);
+  cargar_archivo(archivo);
+  {dath_vader;
+  cuadro_vader; }
+  //comparar(vector_fin, archivo, aux);
+  probar (archivo);
+  Close(archivo);
 End;
 
-Procedure cuadro_vader ();
-Begin
-  GotoXY (35,21);
-  writeln ('Bienvenido al chatBot de cine, auspiciado por Darth Vader');
-  GotoXY(35,25);
-End;
 End.

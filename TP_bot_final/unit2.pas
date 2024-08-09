@@ -56,5 +56,6 @@ Begin
   GotoXY (35,21);
   writeln ('Bienvenido al chatBot de cine, auspiciado por Darth Vader');
   GotoXY(35,25);
+  ReadKey;
 End;
 End.

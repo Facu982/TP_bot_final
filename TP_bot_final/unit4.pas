@@ -1,60 +1,81 @@
 
-Unit unit2;
+Unit unit4;
 
 Interface
 
 Uses 
-crt;
+unit1, unit3;
 
-Const 
-  y = 5;
-  x = 40;
-Procedure dath_vader ();
-Procedure cuadro_vader ();
+Procedure abrir(Var archivo: t_archivo);
+Procedure cargar_archivo(Var archivo: t_archivo);
+Procedure llenar_vector_fin(Var vector_fin: t_vector_fin);
 
 Implementation
 
-Procedure dath_vader ();
+Uses 
+crt;
 
+Procedure cargar_archivo(Var archivo: t_archivo);
+
+Var 
+  aux: t_dato;
+  i, j: byte;
 Begin
-  gotoxy(x-1,y-1);
-  writeln ('  ____________________________________');
-  GotoXY (x,y);
-  writeln ('|               .--.                 |' );
-  gotoxy (x,y+1);
-  writeln ('|         /       ||       \         |');
-  gotoxy(x,y+2);
-  writeln ('|        /        ||        \        |');
-  gotoxy(x,y+3);
-  writeln ('|        |        ||        |        |');
-  gotoxy(x,y+4);
-  writeln ('|        |        ||        |        |');
-  gotoxy(x,y+5);
-  writeln ('|        |/ ----- \/ ----- \|        |');
-  gotoxy(x,y+6);
-  writeln ('|       /  (     )  (     )  \       |');
-  gotoxy(x,y+7);
-  writeln ('|      / \  ----- () -----  / \      |');
-  gotoxy(x,y+8);
-  writeln ('|     /   \      /||\      /   \     |');
-  gotoxy(x,y+9);
-  writeln ('|    /     \    /||||\    /     \    |');
-  gotoxy(x,y+10);
-  writeln ('|   /       \  /||||||\  /       \   |');
-  gotoxy(x,y+11);
-  writeln ('|  /_        \o========o/        _\  |');
-  gotoxy(x,y+12);
-  writeln ('|      --..._  |-.  .-|_...--        |');
-  gotoxy(x,y+13);
-  writeln ('|             |        |             |');
-  gotoxy(x,y+14);
-  writeln ('| ___________________________________|');
+  For j := 1 To 2 Do
+    Begin
+      For i := 1 To n Do
+        Begin
+          writeln('Ingrese palabra clave ', i, ': ');
+          readln(aux.clave[i]);
+        End;
+      writeln('Ingrese respuesta: ');
+      readln(aux.res);
+      write(archivo, aux);
+      ClrScr;
+    End;
+  ClrScr;
 End;
 
-Procedure cuadro_vader ();
+Procedure abrir(Var archivo:t_archivo);
 Begin
-  GotoXY (35,21);
-  writeln ('Bienvenido al chatBot de cine, auspiciado por Darth Vader');
-  GotoXY(35,25);
+  assign(archivo,ruta);
+  {$I-}
+  reset(archivo);
+  {$I-}
+  If IOResult <> 0 Then
+    Begin
+      Rewrite(archivo);
+      cargar_archivo(archivo);
+    End;
+End;
+
+Procedure llenar_vector_fin(Var vector_fin: t_vector_fin);
+Begin
+  vector_fin[1] := 'adios';
+  vector_fin[2] := 'tengo que irme';
+  vector_fin[3] := 'nos vemos';
+  vector_fin[4] := 'chau';
+  vector_fin[5] := 'me voy';
+End;
+
+Procedure buscar (archivo:t_archivo; vector_fin:t_vector_fin);
+
+Var 
+
+  texto, nueva_frase: String;
+  pos_clave: byte;
+  aux: t_dato;
+Begin
+  charla(texto);
+  dividir(aux, nueva_frase, pos_clave, texto );
+  Open(archivo, './archivo.data', fmOpenRead);
+  While Not EOF(Archivo) Do
+    Begin
+      ReadLn(Archivo, auxi);
+
+
+    End;
+
+
 End;
 End.
