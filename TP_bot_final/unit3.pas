@@ -7,11 +7,11 @@ Uses
 unit1,crt,SysUtils;
 
 
+
+
+
 {ahora tengo que ver si divide correctamente las palabras del vector y las compare con lo ingresado por el usuario
 tener en cuenta que no modifique el archivo, solo los auxiliares}
-
-
-
 Procedure cerrar_todo (Var vector_fin:t_vector_fin; Var texto:String; Var bool:Boolean);
 Procedure imprimir_respuesta (Var aux:t_dato; Var texto:String; Var cont:byte);
 Procedure charla ( Var texto:String; Var archivo:t_archivo; Var cont:byte);
@@ -20,7 +20,7 @@ Procedure mostrar_no_encontrado (Var cont:byte; Var cont2:Byte; Var archivo:t_ar
 Procedure recorrer_posicion_archivo (Var cont2:byte; Var cont:byte);
 Procedure dividir(Var aux:t_dato; Var nueva_frase:String ; Var pos_clave:byte);
 Procedure comparar_palabras (Var aux:t_dato);
-Function palabraDentroDeOtra(Var nueva_frase:String; Var texto:String);
+Function palabraDentroDeOtra(Var nueva_frase:String ; Var texto:String);
 
 Procedure probar (Var archivo:t_archivo);
 
@@ -95,6 +95,14 @@ Begin
 End;
 
 
+
+
+
+
+
+
+
+
 {Procedure comparar(vector_fin: t_vector_fin; Var archivo: t_archivo; Var aux: t_dato);
 Var
   cont2,cont: Byte;
@@ -129,31 +137,31 @@ Procedure dividir(Var aux: t_dato; Var nueva_frase: String; Var pos_clave: byte;
 
 Var 
   espacio_pos: word;
-  booleana: Boolean
+  booleana: Boolean;
 
-            Begin
-              booleana := true;
-              While length(aux.clave[pos_clave]) > 0 And (booleana=true) Do
-                Begin
-                  espacio_pos := Pos(' ', aux.clave[pos_clave]);
+Begin
+  booleana := true;
+  While length(aux.clave[pos_clave]) > 0 And (booleana=true) Do
+    Begin
+      espacio_pos := Pos(' ', aux.clave[pos_clave]);
 
-                  If espacio_pos > 0 Then
-                    Begin
-                      nueva_frase := Copy(aux.clave[pos_clave], 1, espacio_pos - 1);
-                      Delete(aux.clave[pos_clave], 1, espacio_pos);
-                    End
-                  Else
-                    Begin
-                      nueva_frase := aux.clave[pos_clave];
-                      aux.clave[pos_clave] := '';
-                    End;
-                  booleana := palabraDentroDeOtra(nueva_frase,texto)
-                End;
-              If booleana=true Then
-                Begin
-                  WriteLn(aux.res);
-                End;
-            End;
+      If espacio_pos > 0 Then
+        Begin
+          nueva_frase := Copy(aux.clave[pos_clave], 1, espacio_pos - 1);
+          Delete(aux.clave[pos_clave], 1, espacio_pos);
+        End
+      Else
+        Begin
+          nueva_frase := aux.clave[pos_clave];
+          aux.clave[pos_clave] := '';
+        End;
+      booleana := palabraDentroDeOtra(nueva_frase,texto);
+    End;
+  If booleana=true Then
+    Begin
+      WriteLn(aux.res);
+    End;
+End;
 
 Procedure comparar_palabras(Var aux: t_dato);
 

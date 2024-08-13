@@ -63,8 +63,9 @@ Procedure buscar (archivo:t_archivo; vector_fin:t_vector_fin);
 Var 
 
   texto, nueva_frase: String;
-  pos_clave: byte;
-  aux: t_dato;
+  pos_clave, cont, cont2: byte;
+  aux, auxi: t_dato;
+  arch: t_archivo;
 Begin
   charla(texto);
   dividir(aux, nueva_frase, pos_clave, texto );
@@ -72,6 +73,16 @@ Begin
   While Not EOF(Archivo) Do
     Begin
       ReadLn(Archivo, auxi);
+      //dividir(auxi, nueva_frase, pos_clave, texto );
+      comparar_palabras(auxi);
+      If aux=auxi Then
+        Begin
+          imprimir_respuesta(aux,texto,cont)
+        End
+      Else
+        Begin
+          mostrar_no_encontrados(cont,cont2,arch)
+        End;
 
 
     End;
