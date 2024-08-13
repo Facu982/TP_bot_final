@@ -9,6 +9,8 @@ unit1, unit3;
 Procedure abrir(Var archivo: t_archivo);
 Procedure cargar_archivo(Var archivo: t_archivo);
 Procedure llenar_vector_fin(Var vector_fin: t_vector_fin);
+Procedure buscar(archivo:t_archivo; vector_fin:t_vector_fin);
+
 
 Implementation
 
@@ -77,11 +79,13 @@ Begin
       comparar_palabras(auxi);
       If aux=auxi Then
         Begin
-          imprimir_respuesta(aux,texto,cont)
+          imprimir_respuesta(aux,texto,cont);
+          ReadKey;
         End
       Else
         Begin
-          mostrar_no_encontrados(cont,cont2,arch)
+          mostrar_no_encontrados(cont,cont2,arch);
+          ReadKey;
         End;
 
 

@@ -4,7 +4,7 @@ Unit unit5;
 Interface
 
 Uses 
-crt, unit1, unit2,unit3,unit4;
+crt, unit1, unit2,unit3, unit4;
 
 Procedure EjecutarChatBotCine;
 
@@ -28,6 +28,7 @@ Begin
   {dath_vader;
   cuadro_vader; }
   //comparar(vector_fin, archivo, aux);
+  buscar(archivo, vector_fin);
   probar (archivo);
   Close(archivo);
 End;
