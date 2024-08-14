@@ -5,7 +5,7 @@ Interface
 
 Const 
   ruta = './archivo.dat';
-  n = 2;
+  n = 5;
 
 Type 
   t_vector_fin = array[1..n] Of string[100];

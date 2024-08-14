@@ -9,7 +9,8 @@ unit1, unit3;
 Procedure abrir(Var archivo: t_archivo);
 Procedure cargar_archivo(Var archivo: t_archivo);
 Procedure llenar_vector_fin(Var vector_fin: t_vector_fin);
-Procedure buscar(archivo:t_archivo; vector_fin:t_vector_fin);
+Procedure buscar (Var archivo:t_archivo; vector_fin:t_vector_fin);
+
 
 
 Implementation
@@ -59,36 +60,39 @@ Begin
   vector_fin[4] := 'chau';
   vector_fin[5] := 'me voy';
 End;
-
-Procedure buscar (archivo:t_archivo; vector_fin:t_vector_fin);
+Procedure buscar_fin (vector_fin: t_vector_fin; texto:String; Var bool1: Boolean);
 
 Var 
+  i: byte;
+Begin
+  For i := 1 To 5 Do
+    Begin
+      If (pos(vector_fin[i], texto) <> 0) Then
+        writeln('me gusto tener esta charla cotigo, adios');
+      bool1 := false;
+    End;
+End;
 
+Procedure buscar (Var archivo:t_archivo; vector_fin:t_vector_fin);
+
+Var 
   texto, nueva_frase: String;
   pos_clave, cont, cont2: byte;
   aux, auxi: t_dato;
-  arch: t_archivo;
+  booleana,bool1: Boolean;
 Begin
+  bool1 := true;
   charla(texto);
-  dividir(aux, nueva_frase, pos_clave, texto );
-  Open(archivo, './archivo.data', fmOpenRead);
-  While Not EOF(Archivo) Do
+  buscar_fin(vector_fin, texto, bool1);
+  While Not EOF(archivo) And (bool1 = true ) Do
     Begin
-      ReadLn(Archivo, auxi);
-      //dividir(auxi, nueva_frase, pos_clave, texto );
-      comparar_palabras(auxi);
-      If aux=auxi Then
+      writeln('hola pepe');
+      Read(archivo, auxi);
+      dividir(auxi, nueva_frase, pos_clave, texto,booleana );
+      If (booleana = false) Then
         Begin
-          imprimir_respuesta(aux,texto,cont);
-          ReadKey;
-        End
-      Else
-        Begin
-          mostrar_no_encontrados(cont,cont2,arch);
-          ReadKey;
+          writeln('No sabria que decirte');
         End;
-
-
     End;
 
 

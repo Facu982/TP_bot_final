@@ -10,19 +10,24 @@ unit1,crt,SysUtils;
 
 
 
+
+
+
+
+
+
 {ahora tengo que ver si divide correctamente las palabras del vector y las compare con lo ingresado por el usuario
 tener en cuenta que no modifique el archivo, solo los auxiliares}
 Procedure cerrar_todo (Var vector_fin:t_vector_fin; Var texto:String; Var bool:Boolean);
 Procedure imprimir_respuesta (Var aux:t_dato; Var texto:String; Var cont:byte);
-Procedure charla ( Var texto:String; Var archivo:t_archivo; Var cont:byte);
+Procedure charla ( Var texto:String);
 Procedure mostrar_no_encontrado (Var cont:byte; Var cont2:Byte; Var archivo:t_archivo);
 //Procedure comparar(vector_fin: t_vector_fin; Var archivo: t_archivo; Var aux: t_dato);
 Procedure recorrer_posicion_archivo (Var cont2:byte; Var cont:byte);
-Procedure dividir(Var aux:t_dato; Var nueva_frase:String ; Var pos_clave:byte);
-Procedure comparar_palabras (Var aux:t_dato);
-Function palabraDentroDeOtra(Var nueva_frase:String ; Var texto:String);
+Procedure dividir(Var aux:t_dato; Var nueva_frase:String ; Var pos_clave:byte ; Var texto:String;Var booleana:Boolean);
 
-Procedure probar (Var archivo:t_archivo);
+Function palabraDentroDeOtra(Var nueva_frase:String ; Var texto:String): Boolean;
+
 
 Implementation
 
@@ -103,6 +108,23 @@ End;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {Procedure comparar(vector_fin: t_vector_fin; Var archivo: t_archivo; Var aux: t_dato);
 Var
   cont2,cont: Byte;
@@ -128,20 +150,22 @@ Begin
       mostrar_no_encontrado(cont,cont2,archivo);
     End;
 End; }
-Function palabraDentroDeOtra(Var nueva_frase:String; Var texto: String): Boolean;
+Function palabraDentroDeOtra(Var nueva_frase:String ; Var texto:String): Boolean;
 Begin
-  Result := Pos(nueva_frase, texto) <> 0;
+  palabraDentroDeOtra := Pos(nueva_frase, texto) > 0;
 End;
 
-Procedure dividir(Var aux: t_dato; Var nueva_frase: String; Var pos_clave: byte; texto:String);
+
+
+Procedure dividir(Var aux: t_dato; Var nueva_frase: String; Var pos_clave: byte; Var texto:String; Var booleana:Boolean);
 
 Var 
   espacio_pos: word;
-  booleana: Boolean;
+
 
 Begin
   booleana := true;
-  While length(aux.clave[pos_clave]) > 0 And (booleana=true) Do
+  While (length(aux.clave[pos_clave]) > 0) And (booleana = true)  Do
     Begin
       espacio_pos := Pos(' ', aux.clave[pos_clave]);
 
@@ -157,39 +181,14 @@ Begin
         End;
       booleana := palabraDentroDeOtra(nueva_frase,texto);
     End;
-  If booleana=true Then
+  If booleana = true Then
     Begin
       WriteLn(aux.res);
+      WriteLn('imprime respuesta');
     End;
 End;
 
-Procedure comparar_palabras(Var aux: t_dato);
 
-Var 
-  pos_clave: byte;
-  nueva_frase: string;
-  i: byte;
-Begin
-  For i := 1 To n Do
-    Begin
-      pos_clave := i;
-      dividir(aux, nueva_frase, pos_clave);
-    End;
-End;
-
-Procedure probar(Var archivo: t_archivo);
-
-Var 
-  aux: t_dato;
-Begin
-  reset(archivo);
-  While Not eof(archivo) Do
-    Begin
-      read(archivo, aux);
-      comparar_palabras(aux);
-    End;
-  readkey;
-End;
 
 
 

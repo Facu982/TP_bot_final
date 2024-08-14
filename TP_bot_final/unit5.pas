@@ -4,7 +4,7 @@ Unit unit5;
 Interface
 
 Uses 
-crt, unit1, unit2,unit3, unit4;
+crt, unit1, unit2, unit3, unit4;
 
 Procedure EjecutarChatBotCine;
 
@@ -25,11 +25,12 @@ Begin
   assign(archivo,ruta);
   rewrite(archivo);
   cargar_archivo(archivo);
-  {dath_vader;
-  cuadro_vader; }
-  //comparar(vector_fin, archivo, aux);
+  dath_vader();
+  cuadro_vader();
+  reset(archivo);
+  //el problema es el archivo, sospechamos que no entra o no escribe
   buscar(archivo, vector_fin);
-  probar (archivo);
+  ReadKey;
   Close(archivo);
 End;
 
