@@ -17,6 +17,9 @@ unit1,crt,SysUtils;
 
 
 
+
+
+
 {ahora tengo que ver si divide correctamente las palabras del vector y las compare con lo ingresado por el usuario
 tener en cuenta que no modifique el archivo, solo los auxiliares}
 Procedure cerrar_todo (Var vector_fin:t_vector_fin; Var texto:String; Var bool:Boolean);
@@ -100,35 +103,9 @@ Begin
   cont := 0;
 End;
 
+Procedure comparar(vector_fin: t_vector_fin; Var archivo: t_archivo; Var aux: t_dato);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{Procedure comparar(vector_fin: t_vector_fin; Var archivo: t_archivo; Var aux: t_dato);
-Var
+Var 
   cont2,cont: Byte;
   bool: Boolean;
   texto: string;
@@ -151,7 +128,7 @@ Begin
         End;
       mostrar_no_encontrado(cont,cont2,archivo);
     End;
-End; }
+End;
 Function palabraDentroDeOtra(Var nueva_frase:String ; Var texto:String): Boolean;
 Begin
   palabraDentroDeOtra := Pos(nueva_frase, texto) > 0;

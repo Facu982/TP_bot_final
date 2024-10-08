@@ -22,6 +22,8 @@ crt;
 
 
 
+
+
 {Procedure cargar_archivo(Var archivo: t_archivo);
 
 Var 
@@ -46,7 +48,6 @@ End;}
 Procedure abrir(Var archivo:t_archivo);
 Begin
   assign(archivo,ruta);
-
   reset(archivo);
 
   If IOResult <> 0 Then

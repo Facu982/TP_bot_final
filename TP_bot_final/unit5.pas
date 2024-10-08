@@ -22,8 +22,8 @@ Var
 Begin
   llenar_vector_fin(vector_fin);
   abrir(archivo);
-  assign(archivo,ruta);
-  rewrite(archivo);
+  // assign(archivo,ruta);
+  // rewrite(archivo);
   //cargar_archivo(archivo);
   dath_vader();
   cuadro_vader();
