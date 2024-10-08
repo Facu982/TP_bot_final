@@ -16,6 +16,7 @@ unit1,crt,SysUtils;
 
 
 
+
 {ahora tengo que ver si divide correctamente las palabras del vector y las compare con lo ingresado por el usuario
 tener en cuenta que no modifique el archivo, solo los auxiliares}
 Procedure cerrar_todo (Var vector_fin:t_vector_fin; Var texto:String; Var bool:Boolean);
@@ -98,6 +99,7 @@ Begin
     cont2 := cont2 + 1;
   cont := 0;
 End;
+
 
 
 

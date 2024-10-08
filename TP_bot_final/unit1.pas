@@ -4,7 +4,7 @@ Unit unit1;
 Interface
 
 Const 
-  ruta = './archivo.dat';
+  ruta = 'C: \Users\facuc\Downloads\Palabras Claves.xlsx';
   n = 5;
 
 Type 

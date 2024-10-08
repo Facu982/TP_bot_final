@@ -7,7 +7,7 @@ Uses
 unit1, unit3;
 
 Procedure abrir(Var archivo: t_archivo);
-Procedure cargar_archivo(Var archivo: t_archivo);
+//Procedure cargar_archivo(Var archivo: t_archivo);
 Procedure llenar_vector_fin(Var vector_fin: t_vector_fin);
 Procedure buscar (Var archivo:t_archivo; vector_fin:t_vector_fin);
 
@@ -18,7 +18,11 @@ Implementation
 Uses 
 crt;
 
-Procedure cargar_archivo(Var archivo: t_archivo);
+
+
+
+
+{Procedure cargar_archivo(Var archivo: t_archivo);
 
 Var 
   aux: t_dato;
@@ -37,18 +41,17 @@ Begin
       ClrScr;
     End;
   ClrScr;
-End;
+End;}
 
 Procedure abrir(Var archivo:t_archivo);
 Begin
   assign(archivo,ruta);
-  {$I-}
+
   reset(archivo);
-  {$I-}
+
   If IOResult <> 0 Then
     Begin
       Rewrite(archivo);
-      cargar_archivo(archivo);
     End;
 End;
 
